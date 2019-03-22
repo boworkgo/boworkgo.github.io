@@ -1,0 +1,27 @@
+permalink: /:categories/:year/:month/:day/:title
+
+# exclude: [".rvmrc", ".rbenv-version", "ReadMe.md", "Rakefile", "changelog.md"]
+highlighter: rouge
+url: "localhost:4000"
+
+title: bowork, go!
+description: Hopefully, a blog but better.  
+author: bowork
+name: Work
+email: bowork189@gmail.com
+github: boworkgo
+
+production_url : https://boworkgo.github.io
+
+markdown: kramdown
+paginate: 10
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
+
+future: true
+minimal_mistakes_skin: "aqua"
