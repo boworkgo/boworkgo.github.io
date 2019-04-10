@@ -1,0 +1,197 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>A Great Day - bowork, go!</title>
+<meta name="description" content="4-10-2019 12:44 AM">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="bowork, go!">
+<meta property="og:title" content="A Great Day">
+<meta property="og:url" content="http://localhost:4000/2019/04/09/A-Great-Day">
+
+
+  <meta property="og:description" content="4-10-2019 12:44 AM">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-09T00:00:00-04:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/2019/04/09/A-Great-Day">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="bowork, go! Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--splash landing dark-theme wide">
+
+    <div class="initial-content">
+      
+
+<div id="main" role="main">
+  <article class="splash" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="A Great Day">
+    <meta itemprop="description" content="4-10-2019 12:44 AM">
+    <meta itemprop="datePublished" content="April 09, 2019">
+    
+
+    <section class="page__content" itemprop="text">
+      <h1 id="4-10-2019-1244-am">4-10-2019 12:44 AM</h1>
+
+<p>I learned so much stuff on my own today. Unfortunately, I know this means I’ll be disappointed tomorrow when I can’t reach what I did today. Nevertheless, I had the most intense hour learning OS concepts and enjoyed some great moments. Let me recap.</p>
+
+<p>Let’s begin with a dynamic programming question. Given a grid of 0’s and 1’s, what’s the area of the largest square of 1’s? The algorithm is pretty clever. Here’s the psuedo-code.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dp(param):
+	char[][] param
+	char[param.rows + 1][param.cols + 1] master = 0's
+	best = 0
+	
+	for i = 1, i &lt;= rows, i++
+		for j = 1, j &lt;= cols, j++
+			if param[i - 1][j - 1] == '1'
+				master[i][j] = min(master[i - 1][j], master[i - 1][j - 1], master[i][j - 1])
+				best = max(master[i][j], best)
+	
+	return best
+</code></pre></div></div>
+
+<p>Next, I learned about the Linux file system. A process is a dynamic program that runs in your computer. It’s represented by a file descriptor, an int, which can be listed in a master table in the kernel. In C, if you want to create a pipe, you need to create an <code class="highlighter-rouge">int fd[2]</code> array. <code class="highlighter-rouge">fd[0]</code> reads and <code class="highlighter-rouge">fd[1]</code> writes. So if we (the parent process) want to read data from a child process, parent process closes <code class="highlighter-rouge">fd[1]</code> and child process closes <code class="highlighter-rouge">fd[0]</code>. A child process is created by forking, where it duplicates the parent process and uses execve to modify the new process. This is similar to forking on GitHub. I know that I may have some misconceptions so I will definitely review this later!</p>
+
+<p>Afterwards, I learned about Python’s pickles, which is the base64 to strings except for binary files. This, however, means it is vulnerable to command injections. Take this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import _pickle
+import subprocess
+from base64 import b64encode
+
+class RunBinSh(object):
+	def __reduce__(self):
+		return (subProcess.Popen, (('/bin/sh', ), ))
+
+print(b64encode(_pickle.dumps(RunBinSh())))
+</code></pre></div></div>
+
+<p>This is a valid string. I get the gist of this program but I need to figure out why there are so many commas in that return statement.</p>
+
+<p>I also took a peek at <code class="highlighter-rouge">php</code> e-mail spoofing program. I need to digest how an e-mail server works sometime, and test out this psuedo-code.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?php
+	$to = you@gmail.com;
+	$subject = '';
+	$message = 'hi';
+	$headers = array(
+		'From: spoof@gmail.com',
+		'Reply-To: realemail@gmail.com'
+	);
+	mail($to, $subject, $message, $headers);
+?&gt;
+</code></pre></div></div>
+
+<p>Then, I stumbled upon a blind-based SQL injection, and realized that I should probably be more familiar with SQL before trying to do SQL injections (even though they are the first things that are taught in cybersecurity). So I just learned more mySQL.</p>
+
+<p>I realized that in query-languages, there doesn’t exist <code class="highlighter-rouge">==</code>. You have to circumvent this by using <code class="highlighter-rouge">is</code> or <code class="highlighter-rouge">=</code>. The <code class="highlighter-rouge">IF(a, b, c)</code> condition works like this: if <code class="highlighter-rouge">a</code> (a boolean) is true, return <code class="highlighter-rouge">b</code>, else return <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">UNION</code> joins together two separate tables of queries (need more practice with this). <code class="highlighter-rouge">LOCATE(a, b)</code> is like <code class="highlighter-rouge">b.find(a)</code> in Python: find string <code class="highlighter-rouge">a</code> in string <code class="highlighter-rouge">b</code>.</p>
+
+<p>Finally, I debugged my Ubuntu machine. For some odd reason, after I logged in, Ubuntu would return me back to the login page. On the login page, you can access the terminal via <code class="highlighter-rouge">ctrl-alt-f3</code>, and then I fixed a Samba error by</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get remove-purge samba samba-*
+sudo apt_get autoremove
+sudo apt-get install samba
+</code></pre></div></div>
+
+<p>Then, I re-escalated my privileges by modifying the <code class="highlighter-rouge">$USER</code> environmental variable:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo chown -R $USER:$USER $HOME
+</code></pre></div></div>
+
+<p>I got back to the log-in page via <code class="highlighter-rouge">ctrl-alt-f1</code>.</p>
+
+<p>Currently, I’m in the process of fixing my <code class="highlighter-rouge">msfconsole</code>. There was a Port 7337 error, which I fixed by finding <code class="highlighter-rouge">etc/postgresql</code> and changing the port in the config file. But for some reason, <code class="highlighter-rouge">msfconsole</code> won’t connect to its database. I’m saving that for a later fight.</p>
+
+    </section>
+  </article>
+</div>
+
+    </div>
+
+    
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

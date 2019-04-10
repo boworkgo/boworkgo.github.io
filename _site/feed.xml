@@ -5,13 +5,93 @@
     <description>Hopefully, a blog but better.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 06 Apr 2019 23:07:12 -0400</pubDate>
-    <lastBuildDate>Sat, 06 Apr 2019 23:07:12 -0400</lastBuildDate>
+    <pubDate>Wed, 10 Apr 2019 00:44:25 -0400</pubDate>
+    <lastBuildDate>Wed, 10 Apr 2019 00:44:25 -0400</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
+        <title>A Great Day</title>
+        <description>&lt;h1 id=&quot;4-10-2019-1244-am&quot;&gt;4-10-2019 12:44 AM&lt;/h1&gt;
+
+&lt;p&gt;I learned so much stuff on my own today. Unfortunately, I know this means I’ll be disappointed tomorrow when I can’t reach what I did today. Nevertheless, I had the most intense hour learning OS concepts and enjoyed some great moments. Let me recap.&lt;/p&gt;
+
+&lt;p&gt;Let’s begin with a dynamic programming question. Given a grid of 0’s and 1’s, what’s the area of the largest square of 1’s? The algorithm is pretty clever. Here’s the psuedo-code.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dp(param):
+	char[][] param
+	char[param.rows + 1][param.cols + 1] master = 0's
+	best = 0
+	
+	for i = 1, i &amp;lt;= rows, i++
+		for j = 1, j &amp;lt;= cols, j++
+			if param[i - 1][j - 1] == '1'
+				master[i][j] = min(master[i - 1][j], master[i - 1][j - 1], master[i][j - 1])
+				best = max(master[i][j], best)
+	
+	return best
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next, I learned about the Linux file system. A process is a dynamic program that runs in your computer. It’s represented by a file descriptor, an int, which can be listed in a master table in the kernel. In C, if you want to create a pipe, you need to create an &lt;code class=&quot;highlighter-rouge&quot;&gt;int fd[2]&lt;/code&gt; array. &lt;code class=&quot;highlighter-rouge&quot;&gt;fd[0]&lt;/code&gt; reads and &lt;code class=&quot;highlighter-rouge&quot;&gt;fd[1]&lt;/code&gt; writes. So if we (the parent process) want to read data from a child process, parent process closes &lt;code class=&quot;highlighter-rouge&quot;&gt;fd[1]&lt;/code&gt; and child process closes &lt;code class=&quot;highlighter-rouge&quot;&gt;fd[0]&lt;/code&gt;. A child process is created by forking, where it duplicates the parent process and uses execve to modify the new process. This is similar to forking on GitHub. I know that I may have some misconceptions so I will definitely review this later!&lt;/p&gt;
+
+&lt;p&gt;Afterwards, I learned about Python’s pickles, which is the base64 to strings except for binary files. This, however, means it is vulnerable to command injections. Take this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import _pickle
+import subprocess
+from base64 import b64encode
+
+class RunBinSh(object):
+	def __reduce__(self):
+		return (subProcess.Popen, (('/bin/sh', ), ))
+
+print(b64encode(_pickle.dumps(RunBinSh())))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is a valid string. I get the gist of this program but I need to figure out why there are so many commas in that return statement.&lt;/p&gt;
+
+&lt;p&gt;I also took a peek at &lt;code class=&quot;highlighter-rouge&quot;&gt;php&lt;/code&gt; e-mail spoofing program. I need to digest how an e-mail server works sometime, and test out this psuedo-code.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;?php
+	$to = you@gmail.com;
+	$subject = '';
+	$message = 'hi';
+	$headers = array(
+		'From: spoof@gmail.com',
+		'Reply-To: realemail@gmail.com'
+	);
+	mail($to, $subject, $message, $headers);
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, I stumbled upon a blind-based SQL injection, and realized that I should probably be more familiar with SQL before trying to do SQL injections (even though they are the first things that are taught in cybersecurity). So I just learned more mySQL.&lt;/p&gt;
+
+&lt;p&gt;I realized that in query-languages, there doesn’t exist &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;. You have to circumvent this by using &lt;code class=&quot;highlighter-rouge&quot;&gt;is&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;IF(a, b, c)&lt;/code&gt; condition works like this: if &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; (a boolean) is true, return &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;, else return &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;UNION&lt;/code&gt; joins together two separate tables of queries (need more practice with this). &lt;code class=&quot;highlighter-rouge&quot;&gt;LOCATE(a, b)&lt;/code&gt; is like &lt;code class=&quot;highlighter-rouge&quot;&gt;b.find(a)&lt;/code&gt; in Python: find string &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; in string &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, I debugged my Ubuntu machine. For some odd reason, after I logged in, Ubuntu would return me back to the login page. On the login page, you can access the terminal via &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl-alt-f3&lt;/code&gt;, and then I fixed a Samba error by&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get remove-purge samba samba-*
+sudo apt_get autoremove
+sudo apt-get install samba
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, I re-escalated my privileges by modifying the &lt;code class=&quot;highlighter-rouge&quot;&gt;$USER&lt;/code&gt; environmental variable:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chown -R $USER:$USER $HOME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I got back to the log-in page via &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl-alt-f1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, I’m in the process of fixing my &lt;code class=&quot;highlighter-rouge&quot;&gt;msfconsole&lt;/code&gt;. There was a Port 7337 error, which I fixed by finding &lt;code class=&quot;highlighter-rouge&quot;&gt;etc/postgresql&lt;/code&gt; and changing the port in the config file. But for some reason, &lt;code class=&quot;highlighter-rouge&quot;&gt;msfconsole&lt;/code&gt; won’t connect to its database. I’m saving that for a later fight.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Apr 2019 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2019/04/09/A-Great-Day</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/04/09/A-Great-Day</guid>
+        
+        
+      </item>
+    
+      <item>
         <title>Hello World</title>
-        <description>&lt;p&gt;Created this blog&lt;/p&gt;
+        <description>&lt;h1 id=&quot;created-this-blog&quot;&gt;Created this blog&lt;/h1&gt;
 </description>
         <pubDate>Sat, 06 Apr 2019 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2019/04/06/Hello-World</link>
