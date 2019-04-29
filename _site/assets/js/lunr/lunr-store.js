@@ -9,8 +9,8 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/2019/04/15/PlaidCTF-2019-Writeup",
         "teaser":null},{
-        "title": "Mark_time",
-        "excerpt":"1:10 PM 4-27-2019   On Peru, Everson’s rocket atttracted tumbling ions. On Nigeria, who knows?  ","categories": [],
+        "title": "Something I wrote out of my ass",
+        "excerpt":"1:46 PM 4-29-2019 I’m feeling lazy but can’t afford to be. I got my own problems, finals and personal issues, but they aren’t much compared with other people’s. Moreover, the world has got its overwhelming share of problems that I’m obliged to take part in solving. How can I get...","categories": [],
         "tags": [],
-        "url": "http://localhost:4000/2019/04/27/Final",
+        "url": "http://localhost:4000/2019/04/29/Every-Essay-Ever",
         "teaser":null}]
