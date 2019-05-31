@@ -8,9 +8,4 @@ var store = [{
         "excerpt":"4-15-2019 12:10 AM Docker solution.sh sudo docker pull whowouldeverguessthis/public sudo docker images sudo docker image inspect whowouldeverguessthis/public sudo docker ps -a sudo docker run -it --name testPCTF whowouldeverguessthis/public bash grep -rI --exclude-dir=proc --exclude-dir=sys 'PCTF{' . cd /var/lib/docker/ sudo grep -rI 'PCTF{' . I pulled the docker image (immutable object). Then,...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/2019/04/15/PlaidCTF-2019-Writeup",
-        "teaser":null},{
-        "title": "Something I wrote out of my ass",
-        "excerpt":"1:46 PM 4-29-2019 I’m feeling lazy but can’t afford to be. I got my own problems, finals and personal issues, but they aren’t much compared with other people’s. Moreover, the world has got its overwhelming share of problems that I’m obliged to take part in solving. How can I get...","categories": [],
-        "tags": [],
-        "url": "http://localhost:4000/2019/04/29/Every-Essay-Ever",
         "teaser":null}]
