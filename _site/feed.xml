@@ -5,23 +5,23 @@
     <description>Hopefully, a blog but better.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Jul 2019 22:46:52 -0400</pubDate>
-    <lastBuildDate>Mon, 29 Jul 2019 22:46:52 -0400</lastBuildDate>
+    <pubDate>Tue, 30 Jul 2019 00:11:25 -0400</pubDate>
+    <lastBuildDate>Tue, 30 Jul 2019 00:11:25 -0400</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
         <title>OSCP Advice</title>
         <description>&lt;h1 id=&quot;7-29-2019-948-pm&quot;&gt;7-29-2019 9:48 PM&lt;/h1&gt;
 
-&lt;p&gt;My exam is fewer than three weeks from today. It is so scary because I don’t feel prepared in the slightest. Hopefully that will change soon. To give me some hope of my success I’m writing about I’ve learned so far from the labs:&lt;/p&gt;
+&lt;p&gt;My exam is fewer than three weeks from today. It is so scary because I don’t feel prepared, but hopefully, that will change soon. To give me some hope and some relaxing time, I’m writing about I’ve learned from the labs:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;OneNote is great reporting template.&lt;/li&gt;
+  &lt;li&gt;OneNote is a great reporting template.&lt;/li&gt;
   &lt;li&gt;Just because a process is running on port 80 doesn’t mean it’s a website (hello, &lt;code class=&quot;highlighter-rouge&quot;&gt;nc -nlvp 80 -e evil.sh&lt;/code&gt;). Be skeptical of nmap results: they may not capture everything. If that’s so, WireShark/file enumeration are your friends.&lt;/li&gt;
-  &lt;li&gt;If you are sure all vulnerabilities discovered don’t lead anywhere, you’re in a rabbit hole, you missed combining vulnerabilities, you’re cracking a machine with a dependency on another, or you missed some vulnerabilities.&lt;/li&gt;
-  &lt;li&gt;Modifying exploits is a pain and a good majority always break/were fixed for your machine, so don’t be mad if an exploit that &lt;em&gt;should work&lt;/em&gt; doesn’t.&lt;/li&gt;
-  &lt;li&gt;The powerful shell enablers are RFI/LFI/RCE/correct credentials. If you can’t find any, there may be a vulnerability which will allow you to enumerate more which will lead to them. Also I always ignore Denial of Service exploits.&lt;/li&gt;
-  &lt;li&gt;The most used topics are knowing how to file upload in web/shell environments, searching for exploits in Google, GitHub, and searchsploit, privilege escalation techniques, and fixing/understanding exploit compilation errors.&lt;/li&gt;
+  &lt;li&gt;If you are sure all vulnerabilities discovered don’t lead anywhere, you’re in a rabbit hole, you missed combining vulnerabilities, you’re cracking a machine with a dependency, or you missed some vulnerabilities.&lt;/li&gt;
+  &lt;li&gt;Modifying exploits is a pain and a good majority always break/were patched, so don’t be mad if an exploit that &lt;em&gt;should work&lt;/em&gt; doesn’t.&lt;/li&gt;
+  &lt;li&gt;The powerful shell enablers are RFI/LFI/RCE/correct credentials. If you can’t find any, there may be a vulnerability which will allow you to enumerate more information which will lead to them. Also I always ignore Denial of Service exploits.&lt;/li&gt;
+  &lt;li&gt;Some must-know PWK topics are knowing how to file upload in web/shell environments, searching for exploits in Google, GitHub, and searchsploit, privilege escalation techniques, and fixing/understanding exploit compilation errors.&lt;/li&gt;
   &lt;li&gt;Gather all possible exploits and rank their probability of success before trying to execute them.&lt;/li&gt;
 &lt;/ul&gt;
 

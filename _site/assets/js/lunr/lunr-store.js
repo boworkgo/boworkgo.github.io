@@ -5,7 +5,7 @@ var store = [{
         "url": "http://localhost:4000/2019/04/15/PlaidCTF-2019-Writeup",
         "teaser":null},{
         "title": "OSCP Advice",
-        "excerpt":"7-29-2019 9:48 PM My exam is fewer than three weeks from today. It is so scary because I don’t feel prepared in the slightest. Hopefully that will change soon. To give me some hope of my success I’m writing about I’ve learned so far from the labs: OneNote is great...","categories": [],
+        "excerpt":"7-29-2019 9:48 PM My exam is fewer than three weeks from today. It is so scary because I don’t feel prepared, but hopefully, that will change soon. To give me some hope and some relaxing time, I’m writing about I’ve learned from the labs: OneNote is a great reporting template....","categories": [],
         "tags": [],
         "url": "http://localhost:4000/2019/07/29/OSCP-Update",
         "teaser":null}]
