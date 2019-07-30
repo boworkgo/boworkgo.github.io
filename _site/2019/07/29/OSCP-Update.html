@@ -1,0 +1,142 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>OSCP Advice - bowork, go!</title>
+<meta name="description" content="7-29-2019 9:48 PM">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="bowork, go!">
+<meta property="og:title" content="OSCP Advice">
+<meta property="og:url" content="http://localhost:4000/2019/07/29/OSCP-Update">
+
+
+  <meta property="og:description" content="7-29-2019 9:48 PM">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-07-29T00:00:00-04:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/2019/07/29/OSCP-Update">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="bowork, go! Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--splash landing dark-theme wide">
+
+    <div class="initial-content">
+      
+
+<div id="main" role="main">
+  <article class="splash" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="OSCP Advice">
+    <meta itemprop="description" content="7-29-2019 9:48 PM">
+    <meta itemprop="datePublished" content="July 29, 2019">
+    
+
+    <section class="page__content" itemprop="text">
+      <h1 id="7-29-2019-948-pm">7-29-2019 9:48 PM</h1>
+
+<p>My exam is fewer than three weeks from today. It is so scary because I don’t feel prepared in the slightest. Hopefully that will change soon. To give me some hope of my success I’m writing about I’ve learned so far from the labs:</p>
+
+<ul>
+  <li>OneNote is great reporting template.</li>
+  <li>Just because a process is running on port 80 doesn’t mean it’s a website (hello, <code class="highlighter-rouge">nc -nlvp 80 -e evil.sh</code>). Be skeptical of nmap results: they may not capture everything. If that’s so, WireShark/file enumeration are your friends.</li>
+  <li>If you are sure all vulnerabilities discovered don’t lead anywhere, you’re in a rabbit hole, you missed combining vulnerabilities, you’re cracking a machine with a dependency on another, or you missed some vulnerabilities.</li>
+  <li>Modifying exploits is a pain and a good majority always break/were fixed for your machine, so don’t be mad if an exploit that <em>should work</em> doesn’t.</li>
+  <li>The powerful shell enablers are RFI/LFI/RCE/correct credentials. If you can’t find any, there may be a vulnerability which will allow you to enumerate more which will lead to them. Also I always ignore Denial of Service exploits.</li>
+  <li>The most used topics are knowing how to file upload in web/shell environments, searching for exploits in Google, GitHub, and searchsploit, privilege escalation techniques, and fixing/understanding exploit compilation errors.</li>
+  <li>Gather all possible exploits and rank their probability of success before trying to execute them.</li>
+</ul>
+
+<p>May everyone trying to get OSCP certified find success. :)</p>
+
+    </section>
+  </article>
+</div>
+
+    </div>
+
+    
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
