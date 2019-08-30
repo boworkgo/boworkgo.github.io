@@ -1,0 +1,79 @@
+<h1 id="4-15-2019-1210-am">4-15-2019 12:10 AM</h1>
+
+<h3 id="docker">Docker</h3>
+
+<p>Just so you know, or I might be wrong: a docker image is the immutable source code, and docker container is an image’s running instance. I pulled the challenge image and tried to grep for the flag in the container. When that didn’t work, I searched for the flag in the image location.</p>
+
+<p><em>solution.sh</em></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo docker pull whowouldeverguessthis/public
+sudo docker images
+sudo docker image inspect whowouldeverguessthis/public
+sudo docker ps -a
+sudo docker run -it --name testPCTF whowouldeverguessthis/public bash
+	grep -rI --exclude-dir=proc --exclude-dir=sys 'PCTF{' .
+cd /var/lib/docker/
+sudo grep -rI 'PCTF{' .
+</code></pre></div></div>
+
+<p>Flag: <code class="highlighter-rouge">PCTF{well_it_isnt_many_points_what_did_you_expect}</code></p>
+
+<h3 id="everland">Everland</h3>
+
+<p>This was a game hacking problem. First, I guessed that recuperating every turn would let me defeat all the monsters except for the Possessed Monster. Then, I found a function in the game called <code class="highlighter-rouge">Sacrifice</code>. I found the health of the Possessed monster was defined by <code class="highlighter-rouge">max((!strength)*5, 250)</code>, so I needed to alter the former parameter. With some more guessing, I altered the first parameter to be <code class="highlighter-rouge">65 * 5 = 325</code>, enabling the <code class="highlighter-rouge">Sacrifice</code> function, enabling me to defeat the Possessed monster.</p>
+
+<p><em>everland.sml</em> (Original file)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+if (!should_capture) andalso (not (!has_captured)) 
+then
+  if (!e_h &gt; 50) then
+(TextIO.print ("It was too strong, you failed to capture "^
+  (color e_name ORANGE));
+enemy)
+  else
+  let
+val _ = should_capture := false
+val _ = has_captured := true
+val _ = captured := enemy
+(* Kill them so that you can heal yourself *)
+fun sacrifice_fn (my_h, my_s, their_h, their_s) =
+  (fn () =&gt; (
+ my_h := min((!my_h)+min(!e_h, !my_s*10), player_max);
+ e_h  := (!e_h-(!my_h)*10);
+ p_ms := List.filter (fn (n, _) =&gt; n &lt;&gt; "Sacrifice") (!p_ms)),
+   fn () =&gt; ()) (* Only used by the AI, not us *)
+val _ = p_ms := (List.filter (fn (n, _) =&gt; n &lt;&gt; "Capture") (!p_ms))
+@[("Sacrifice", sacrifice_fn)]
+...
+</code></pre></div></div>
+
+<p><em>solution.py</em></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pwn import *
+
+r = remote('everland.pwni.ng', '7772')
+r.sendline('Greg')
+for x in range(79):
+r.sendline('fight')
+r.sendline('2')
+for x in range(5):
+r.sendline('forage')
+r.sendline('use')
+r.sendline('2')
+r.sendline('use')
+r.sendline('1')
+r.sendline('use')
+r.sendline('3')
+r.sendline('fight')
+r.sendline('4')
+r.sendline('use')
+r.sendline('1')
+r.sendline('fight')
+r.sendline('5')
+r.sendline('fight')
+r.sendline('5')
+r.interactive()
+</code></pre></div></div>
+
+<p>Flag: <code class="highlighter-rouge">PCTF{just_be_glad_i_didnt_arm_cpt_hook_with_GADTs}</code></p>
