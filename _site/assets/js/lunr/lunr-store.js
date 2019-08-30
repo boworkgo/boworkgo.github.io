@@ -5,7 +5,7 @@ var store = [{
         "url": "http://localhost:4000/2019/04/15/PlaidCTF-2019-Writeup",
         "teaser":null},{
         "title": "OSCP Advice",
-        "excerpt":"8-29-2019 8:48 PM One month update: I didn’t pass the OSCP on August 17. I’ll be trying again December during winter break. This semester will be the final one in which I will broaden my view of computer science and security through random projects, then I’m going to specialize in...","categories": [],
+        "excerpt":"8-29-2019 8:48 PM One month update: I didn’t pass the OSCP on August 17. I’ll be trying again December during winter break. This semester will be the final one in which I will broaden my view of computer science and security through random projects; then I’m going to specialize in...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/2019/07/29/OSCP-Update",
         "teaser":null}]
