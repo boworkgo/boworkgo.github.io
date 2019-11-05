@@ -5,22 +5,9 @@
     <description>Hopefully, a blog but better.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 29 Aug 2019 21:12:47 -0400</pubDate>
-    <lastBuildDate>Thu, 29 Aug 2019 21:12:47 -0400</lastBuildDate>
-    <generator>Jekyll v3.7.4</generator>
-    
-      <item>
-        <title>OSCP Advice</title>
-        <description>&lt;h1 id=&quot;8-29-2019-848-pm&quot;&gt;8-29-2019 8:48 PM&lt;/h1&gt;
-
-&lt;p&gt;One month update: I didn’t pass the OSCP on August 17. I’ll be trying again December during winter break. This semester will be the final one in which I will broaden my view of computer science and security through random projects; then I’m going to specialize in something (binary exploitation?). I’m not going to post OSCP advice until after I pass it (if I do). This is a depressing but simple and important post.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 29 Jul 2019 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2019/07/29/OSCP-Update</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/29/OSCP-Update</guid>
-        
-        
-      </item>
+    <pubDate>Mon, 04 Nov 2019 20:06:00 -0500</pubDate>
+    <lastBuildDate>Mon, 04 Nov 2019 20:06:00 -0500</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>PlaidCTF 2019 Writeup</title>
@@ -32,7 +19,7 @@
 
 &lt;p&gt;&lt;em&gt;solution.sh&lt;/em&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo docker pull whowouldeverguessthis/public
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo docker pull whowouldeverguessthis/public
 sudo docker images
 sudo docker image inspect whowouldeverguessthis/public
 sudo docker ps -a
@@ -42,15 +29,15 @@ cd /var/lib/docker/
 sudo grep -rI 'PCTF{' .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Flag: &lt;code class=&quot;highlighter-rouge&quot;&gt;PCTF{well_it_isnt_many_points_what_did_you_expect}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Flag: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PCTF{well_it_isnt_many_points_what_did_you_expect}&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;everland&quot;&gt;Everland&lt;/h3&gt;
 
-&lt;p&gt;This was a game hacking problem. First, I guessed that recuperating every turn would let me defeat all the monsters except for the Possessed Monster. Then, I found a function in the game called &lt;code class=&quot;highlighter-rouge&quot;&gt;Sacrifice&lt;/code&gt;. I found the health of the Possessed monster was defined by &lt;code class=&quot;highlighter-rouge&quot;&gt;max((!strength)*5, 250)&lt;/code&gt;, so I needed to alter the former parameter. With some more guessing, I altered the first parameter to be &lt;code class=&quot;highlighter-rouge&quot;&gt;65 * 5 = 325&lt;/code&gt;, enabling the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sacrifice&lt;/code&gt; function, enabling me to defeat the Possessed monster.&lt;/p&gt;
+&lt;p&gt;This was a game hacking problem. First, I guessed that recuperating every turn would let me defeat all the monsters except for the Possessed Monster. Then, I found a function in the game called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sacrifice&lt;/code&gt;. I found the health of the Possessed monster was defined by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max((!strength)*5, 250)&lt;/code&gt;, so I needed to alter the former parameter. With some more guessing, I altered the first parameter to be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;65 * 5 = 325&lt;/code&gt;, enabling the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sacrifice&lt;/code&gt; function, enabling me to defeat the Possessed monster.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;everland.sml&lt;/em&gt; (Original file)&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
 if (!should_capture) andalso (not (!has_captured)) 
 then
   if (!e_h &amp;gt; 50) then
@@ -76,7 +63,7 @@ val _ = p_ms := (List.filter (fn (n, _) =&amp;gt; n &amp;lt;&amp;gt; &quot;Captu
 
 &lt;p&gt;&lt;em&gt;solution.py&lt;/em&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from pwn import *
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from pwn import *
 
 r = remote('everland.pwni.ng', '7772')
 r.sendline('Greg')
@@ -102,7 +89,7 @@ r.sendline('5')
 r.interactive()
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Flag: &lt;code class=&quot;highlighter-rouge&quot;&gt;PCTF{just_be_glad_i_didnt_arm_cpt_hook_with_GADTs}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Flag: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PCTF{just_be_glad_i_didnt_arm_cpt_hook_with_GADTs}&lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 15 Apr 2019 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2019/04/15/PlaidCTF-2019-Writeup</link>

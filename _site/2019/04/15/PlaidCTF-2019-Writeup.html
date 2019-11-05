@@ -111,7 +111,7 @@
 
 <p><em>solution.sh</em></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo docker pull whowouldeverguessthis/public
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo docker pull whowouldeverguessthis/public
 sudo docker images
 sudo docker image inspect whowouldeverguessthis/public
 sudo docker ps -a
@@ -121,15 +121,15 @@ cd /var/lib/docker/
 sudo grep -rI 'PCTF{' .
 </code></pre></div></div>
 
-<p>Flag: <code class="highlighter-rouge">PCTF{well_it_isnt_many_points_what_did_you_expect}</code></p>
+<p>Flag: <code class="language-plaintext highlighter-rouge">PCTF{well_it_isnt_many_points_what_did_you_expect}</code></p>
 
 <h3 id="everland">Everland</h3>
 
-<p>This was a game hacking problem. First, I guessed that recuperating every turn would let me defeat all the monsters except for the Possessed Monster. Then, I found a function in the game called <code class="highlighter-rouge">Sacrifice</code>. I found the health of the Possessed monster was defined by <code class="highlighter-rouge">max((!strength)*5, 250)</code>, so I needed to alter the former parameter. With some more guessing, I altered the first parameter to be <code class="highlighter-rouge">65 * 5 = 325</code>, enabling the <code class="highlighter-rouge">Sacrifice</code> function, enabling me to defeat the Possessed monster.</p>
+<p>This was a game hacking problem. First, I guessed that recuperating every turn would let me defeat all the monsters except for the Possessed Monster. Then, I found a function in the game called <code class="language-plaintext highlighter-rouge">Sacrifice</code>. I found the health of the Possessed monster was defined by <code class="language-plaintext highlighter-rouge">max((!strength)*5, 250)</code>, so I needed to alter the former parameter. With some more guessing, I altered the first parameter to be <code class="language-plaintext highlighter-rouge">65 * 5 = 325</code>, enabling the <code class="language-plaintext highlighter-rouge">Sacrifice</code> function, enabling me to defeat the Possessed monster.</p>
 
 <p><em>everland.sml</em> (Original file)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 if (!should_capture) andalso (not (!has_captured)) 
 then
   if (!e_h &gt; 50) then
@@ -155,7 +155,7 @@ val _ = p_ms := (List.filter (fn (n, _) =&gt; n &lt;&gt; "Capture") (!p_ms))
 
 <p><em>solution.py</em></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pwn import *
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pwn import *
 
 r = remote('everland.pwni.ng', '7772')
 r.sendline('Greg')
@@ -181,7 +181,7 @@ r.sendline('5')
 r.interactive()
 </code></pre></div></div>
 
-<p>Flag: <code class="highlighter-rouge">PCTF{just_be_glad_i_didnt_arm_cpt_hook_with_GADTs}</code></p>
+<p>Flag: <code class="language-plaintext highlighter-rouge">PCTF{just_be_glad_i_didnt_arm_cpt_hook_with_GADTs}</code></p>
 
     </section>
   </article>
